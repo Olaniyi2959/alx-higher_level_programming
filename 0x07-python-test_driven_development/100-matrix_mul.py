@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # 100-matrix_mul.py
-# Victoria Oluwabunmi Olabode <bhummhie97@gmail.com>
+# Afolayan Olaniyi Joseph <olaniyiafolayan@yahoo.com>
 """Defines a matrix multiplication function."""
 
 
