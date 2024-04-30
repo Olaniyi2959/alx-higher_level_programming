@@ -1,9 +1,19 @@
 #!/usr/bin/node
-let fs = require('fs');
-fs.readFile(process.argv[2], 'utf-8', function (err, data) {
+
+/**
+ * script that reads and prints the content of a file.
+ * import fs with the require keyword to a variable called fs
+ * create a variable to store the command line arg
+ * using the fs.readFile() with asynchrous callback to catch errors
+ * print out the value
+ */
+
+const fs = require('fs');
+const args = process.argv[2];
+
+fs.readFile(args, 'utf-8', (err, data) => {
   if (err) {
-    console.log(err);
-  } else {
-    console.log(data);
+    console.error(err);
   }
+  console.log(data);
 });
