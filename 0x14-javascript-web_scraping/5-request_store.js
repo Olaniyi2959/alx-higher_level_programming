@@ -1,20 +1,17 @@
 #!/usr/bin/node
-// Number of films with the given character ID
+// lorem ipsum
+
 const request = require('request');
-let num = 0;
+const fs = require('fs');
 
 request.get(process.argv[2], (error, response, body) => {
   if (error) {
     console.log(error);
   } else {
-    const content = JSON.parse(body);
-    content.results.forEach((film) => {
-      film.characters.forEach((character) => {
-        if (character.includes(18)) {
-          num += 1;
-        }
-      });
+    fs.writeFile(process.argv[3], body, 'utf-8', (error) => {
+      if (error) {
+        console.log(error);
+      }
     });
-    console.log(num);
   }
 });
