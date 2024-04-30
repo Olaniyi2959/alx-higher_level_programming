@@ -1,20 +1,21 @@
 #!/usr/bin/node
-let request = require('request');
-let url = process.argv[2];
+const request = require('request');
+const arg = process.argv[2];
 
-request(url, function (error, response, body) {
-  if (error) {
-    console.log(error);
-  } else {
-    let results = JSON.parse(body).results;
-    let count = 0;
-    for (let index = 0; index < results.length; index++) {
-      for (let char = 0; char < results[index].characters.length; char++) {
-        if (results[index].characters[char].includes('18')) {
-          count++;
-        }
-      }
-    }
-    console.log(count);
+// use request to GET data from the API
+request(arg, (err, response, body) => {
+  if (err) {
+    console.error(err);
   }
+  // Store the parsed JSON data into an object
+  const obj = JSON.parse(body).results;
+  let count = 0;
+
+  // Using a forEach method, loop through the list to get all matching index
+  obj.forEach(objx => {
+    if (objx.characters.includes('https://swapi-api.alx-tools.com/api/people/18/')) {
+      count++;
+    }
+  });
+  console.log(count);
 });
